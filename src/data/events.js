@@ -1,0 +1,32 @@
+export const events = [
+  {
+    id: 'noche-de-jazz',
+    name: 'Noche de Jazz',
+    date: 'Sábado, 18 de octubre · 20:00 h',
+    venue: 'Teatro Metropolitano, Ciudad de México',
+    price: '$450 MXN',
+    category: 'Música en vivo',
+    artwork: 'jazz',
+    featured: 'Concierto',
+  },
+  {
+    id: 'festival-luz',
+    name: 'Festival de la Luz',
+    date: 'Viernes, 24 de octubre · 18:30 h',
+    venue: 'Parque Bicentenario, Ciudad de México',
+    price: '$680 MXN',
+    category: 'Arte y cultura',
+    artwork: 'light',
+    featured: 'Festival',
+  },
+  {
+    id: 'comedia-sin-filtro',
+    name: 'Comedia sin Filtro',
+    date: 'Jueves, 30 de octubre · 21:00 h',
+    venue: 'Foro Central, Guadalajara',
+    price: '$320 MXN',
+    category: 'Risas en vivo',
+    artwork: 'comedy',
+    featured: 'Stand-up',
+  },
+];
