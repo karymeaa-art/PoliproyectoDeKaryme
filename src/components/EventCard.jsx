@@ -1,4 +1,4 @@
-function EventCard({ event }) {
+function EventCard({ event, onSelect }) {
   return (
     <article className="event-card">
       <div
@@ -28,8 +28,13 @@ function EventCard({ event }) {
         </p>
         <div className="event-card-bottom">
           <p className="event-price"><span>Desde</span>{event.price}</p>
-          <button className="event-button" type="button" aria-label={`Consultar ${event.name}`}>
-            Consultar <span aria-hidden="true">→</span>
+          <button
+            className="event-button"
+            type="button"
+            aria-label={`Ver detalles de ${event.name}`}
+            onClick={onSelect}
+          >
+            Ver detalles <span aria-hidden="true">→</span>
           </button>
         </div>
       </div>
