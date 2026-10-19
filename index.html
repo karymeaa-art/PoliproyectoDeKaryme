@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Explora próximos conciertos, espectáculos y experiencias en Eventikets."
+    />
+    <title>Eventos disponibles | Eventikets</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="events.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#" aria-label="Eventikets, inicio">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 32 32" fill="none">
+            <path
+              d="M5 10.5A2.5 2.5 0 0 0 7.5 8h17A2.5 2.5 0 0 0 27 10.5v2a3.5 3.5 0 0 0 0 7v2a2.5 2.5 0 0 0-2.5 2.5h-17A2.5 2.5 0 0 0 5 21.5v-2a3.5 3.5 0 0 0 0-7v-2Z"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linejoin="round"
+            />
+            <path d="M16 11v2m0 3v2m0 3v1" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+          </svg>
+        </span>
+        <span>eventi<span class="brand-accent">kets</span></span>
+      </a>
+      <span class="header-note">Momentos que se viven juntos</span>
+    </header>
+
+    <main>
+      <section class="catalog" aria-labelledby="catalog-title">
+        <div class="catalog-heading">
+          <div>
+            <p class="eyebrow"><span class="eyebrow-dot"></span> Encuentra tu próximo plan</p>
+            <h1 id="catalog-title">Eventos <span>disponibles</span></h1>
+            <p class="catalog-intro">
+              Próximos conciertos, cultura y experiencias para hacer espacio en tu calendario.
+            </p>
+          </div>
+          <p class="catalog-count"><span id="event-count">0</span> experiencias para descubrir</p>
+        </div>
+
+        <div class="catalog-controls" aria-label="Buscar y filtrar eventos">
+          <label class="search-control">
+            <span>Buscar concierto</span>
+            <input
+              id="event-search"
+              type="search"
+              placeholder="Artista o ciudad"
+              autocomplete="off"
+            />
+          </label>
+          <label class="filter-control">
+            <span>Ciudad</span>
+            <select id="city-filter">
+              <option value="">Todas las ciudades</option>
+            </select>
+          </label>
+        </div>
+
+        <div id="event-grid" class="event-grid" aria-live="polite"></div>
+        <p id="empty-state" class="empty-state" hidden>No hay eventos que coincidan con tu búsqueda.</p>
+      </section>
+    </main>
+
+    <dialog id="event-details" class="event-details" aria-labelledby="details-title">
+      <div class="details-heading">
+        <div>
+          <p class="eyebrow"><span class="eyebrow-dot"></span> Información del evento</p>
+          <h2 id="details-title"></h2>
+        </div>
+        <button class="details-close" type="button" aria-label="Cerrar detalles">×</button>
+      </div>
+      <dl id="details-content" class="details-content"></dl>
+    </dialog>
+
+    <footer class="site-footer">
+      <span class="footer-mark" aria-hidden="true">✳</span>
+      <p>Tu siguiente gran recuerdo empieza aquí.</p>
+      <span class="footer-year">EVENTIKETS · 2026</span>
+    </footer>
+  </body>
+</html>
