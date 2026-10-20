@@ -1,6 +1,6 @@
 # EventTickets
 
-Frontend inicial para consultar eventos y explorar una interfaz de venta de boletos. Este proyecto contiene únicamente una base visual: no incluye compras, cuentas de usuario ni conexión con servicios externos.
+Frontend para consultar eventos y probar una selección de boletos. La confirmación es solo una demostración local: no realiza cobros, no incluye cuentas de usuario ni se conecta con servicios externos.
 
 ## Requisitos
 
@@ -33,4 +33,4 @@ src/
   main.jsx      Punto de entrada de React
 ```
 
-Los eventos de ejemplo se pueden modificar en `src/data/events.js`. Las opciones Mis boletos y Mi perfil son solo elementos visuales para futuras funcionalidades.
+El catálogo que se publica desde `index.html` se mantiene en `events.js`; los eventos con precio confirmado permiten elegir cantidad y consultar el total. Si un evento incluye `availableTickets`, la cantidad se limita a esa disponibilidad. La selección no se guarda ni realiza pagos. Las opciones Mis boletos y Mi perfil son solo elementos visuales para futuras funcionalidades.

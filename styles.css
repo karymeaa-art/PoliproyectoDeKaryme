@@ -487,6 +487,130 @@ h1 span {
   font-weight: 600;
 }
 
+.details-note {
+  margin: 18px 0 0;
+  padding: 12px;
+  border-radius: 6px;
+  background: #fff5ee;
+  color: #875330;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.ticket-selection {
+  margin-top: 23px;
+  padding-top: 21px;
+  border-top: 1px solid var(--line);
+}
+
+.ticket-selection h3 {
+  margin: 0 0 15px;
+  font-family: "Manrope", sans-serif;
+  font-size: 17px;
+  letter-spacing: -0.3px;
+}
+
+.ticket-quantity-label {
+  display: block;
+  margin-bottom: 7px;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.ticket-quantity {
+  width: 100%;
+  min-height: 43px;
+  padding: 0 12px;
+  border: 1px solid #dfe5df;
+  border-radius: 6px;
+  background: #fff;
+  color: var(--ink);
+  font: inherit;
+  font-size: 14px;
+}
+
+.ticket-quantity:focus-visible {
+  border-color: var(--green);
+  outline: 3px solid var(--green-light);
+}
+
+.ticket-availability,
+.ticket-validation {
+  margin: 8px 0 0;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.ticket-availability {
+  color: var(--muted);
+}
+
+.ticket-validation {
+  color: #a33f32;
+}
+
+.ticket-summary {
+  margin-top: 18px;
+  padding: 15px;
+  border-radius: 7px;
+  background: #f7f8f5;
+}
+
+.ticket-summary h4 {
+  margin: 0 0 11px;
+  font-size: 12px;
+}
+
+.ticket-summary dl {
+  display: grid;
+  grid-template-columns: minmax(105px, 0.8fr) minmax(0, 1.2fr);
+  gap: 8px 12px;
+  margin: 0;
+  font-size: 11px;
+  line-height: 1.45;
+}
+
+.ticket-summary dt {
+  color: var(--muted);
+}
+
+.ticket-summary dd {
+  margin: 0;
+  color: var(--ink);
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.ticket-summary dt:last-of-type,
+.ticket-summary dd:last-of-type {
+  padding-top: 9px;
+  border-top: 1px solid var(--line);
+  color: var(--green);
+  font-weight: 700;
+}
+
+.ticket-confirm {
+  width: 100%;
+  margin-top: 15px;
+}
+
+.ticket-confirm:disabled {
+  border-color: #aeb7ae;
+  background: #aeb7ae;
+  cursor: not-allowed;
+}
+
+.ticket-confirmation {
+  margin: 12px 0 0;
+  padding: 11px;
+  border-radius: 6px;
+  background: var(--green-light);
+  color: var(--green);
+  font-size: 11px;
+  line-height: 1.55;
+}
+
 @keyframes card-appear {
   from {
     opacity: 0;

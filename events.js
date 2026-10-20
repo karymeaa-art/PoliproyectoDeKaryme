@@ -197,9 +197,22 @@ const detailsDialog = document.querySelector("#event-details");
 const detailsTitle = document.querySelector("#details-title");
 const detailsContent = document.querySelector("#details-content");
 const detailsClose = document.querySelector(".details-close");
+const detailsNote = document.querySelector("#details-note");
+const ticketSelection = document.querySelector("#ticket-selection");
+const ticketQuantity = document.querySelector("#ticket-quantity");
+const ticketAvailability = document.querySelector("#ticket-availability");
+const ticketValidation = document.querySelector("#ticket-validation");
+const ticketConfirmation = document.querySelector("#ticket-confirmation");
+const confirmSelection = document.querySelector("#confirm-selection");
+const summaryEvent = document.querySelector("#summary-event");
+const summaryDate = document.querySelector("#summary-date");
+const summaryPrice = document.querySelector("#summary-price");
+const summaryQuantity = document.querySelector("#summary-quantity");
+const summaryTotal = document.querySelector("#summary-total");
 const sortedEvents = [...events].sort((first, second) =>
   first.sortDate.localeCompare(second.sortDate),
 );
+let currentEvent = null;
 
 const cities = [...new Set(sortedEvents.map((event) => event.city))].sort((a, b) =>
   a.localeCompare(b, "es"),
@@ -272,6 +285,7 @@ function renderEvents() {
 }
 
 function showEventDetails(event) {
+  currentEvent = event;
   detailsTitle.textContent = event.name;
   const details = [
     ["Fecha", event.date],
@@ -293,11 +307,83 @@ function showEventDetails(event) {
       return [term, description];
     }),
   );
+
+  ticketQuantity.value = "1";
+  ticketConfirmation.hidden = true;
+  if (Number.isFinite(event.price) && event.price > 0) {
+    detailsNote.hidden = true;
+    ticketSelection.hidden = false;
+    const hasInventory =
+      Number.isSafeInteger(event.availableTickets) && event.availableTickets >= 0;
+    if (hasInventory) {
+      ticketQuantity.max = String(event.availableTickets);
+      ticketAvailability.textContent = `Boletos disponibles: ${event.availableTickets}`;
+      ticketAvailability.hidden = false;
+    } else {
+      ticketQuantity.removeAttribute("max");
+      ticketAvailability.hidden = true;
+    }
+    updateTicketSelection();
+  } else {
+    ticketSelection.hidden = true;
+    detailsNote.textContent =
+      "La selección de boletos estará disponible cuando se confirme el precio del evento.";
+    detailsNote.hidden = false;
+  }
   detailsDialog.showModal();
+}
+
+function updateTicketSelection() {
+  if (!currentEvent || !Number.isFinite(currentEvent.price)) return;
+
+  const rawQuantity = ticketQuantity.value;
+  const quantity = ticketQuantity.valueAsNumber;
+  const hasInventory =
+    Number.isSafeInteger(currentEvent.availableTickets) && currentEvent.availableTickets >= 0;
+  let validationMessage = "";
+
+  if (rawQuantity === "") {
+    validationMessage = "Ingresa la cantidad de boletos que deseas.";
+  } else if (!Number.isSafeInteger(quantity) || quantity < 1) {
+    validationMessage = "Ingresa una cantidad entera de al menos un boleto.";
+  } else if (hasInventory && currentEvent.availableTickets === 0) {
+    validationMessage = "Este evento ya no tiene boletos disponibles.";
+  } else if (hasInventory && quantity > currentEvent.availableTickets) {
+    validationMessage = `Solo hay ${currentEvent.availableTickets} boletos disponibles.`;
+  } else if (!Number.isSafeInteger(currentEvent.price * quantity)) {
+    validationMessage = "La cantidad es demasiado grande para calcular el importe de forma segura.";
+  }
+
+  const isValid = validationMessage === "";
+  ticketValidation.textContent = validationMessage;
+  ticketValidation.hidden = isValid;
+  confirmSelection.disabled = !isValid;
+  summaryEvent.textContent = currentEvent.name;
+  summaryDate.textContent = `${currentEvent.date}${currentEvent.time ? ` · ${currentEvent.time}` : " · Horario por confirmar"}`;
+  summaryPrice.textContent = currencyFormatter.format(currentEvent.price);
+  summaryQuantity.textContent = rawQuantity || "—";
+  summaryTotal.textContent = isValid
+    ? currencyFormatter.format(currentEvent.price * quantity)
+    : "—";
 }
 
 searchInput.addEventListener("input", renderEvents);
 cityFilter.addEventListener("change", renderEvents);
+ticketQuantity.addEventListener("input", () => {
+  ticketConfirmation.hidden = true;
+  updateTicketSelection();
+});
+confirmSelection.addEventListener("click", () => {
+  if (!currentEvent) return;
+  updateTicketSelection();
+  if (confirmSelection.disabled) return;
+
+  const quantity = ticketQuantity.valueAsNumber;
+  const total = currencyFormatter.format(currentEvent.price * quantity);
+  ticketConfirmation.textContent =
+    `Selección confirmada: ${quantity} ${quantity === 1 ? "boleto" : "boletos"} para ${currentEvent.name}, por ${total}. Esta es una demostración; no se realizó ningún cobro.`;
+  ticketConfirmation.hidden = false;
+});
 eventGrid.addEventListener("click", (event) => {
   const button = event.target.closest(".details-button");
   if (!button) return;

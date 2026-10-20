@@ -15,7 +15,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
-    <script src="events.js" defer></script>
+    <script src="events.js" type="module"></script>
   </head>
   <body>
     <header class="site-header">
@@ -81,6 +81,46 @@
         <button class="details-close" type="button" aria-label="Cerrar detalles">×</button>
       </div>
       <dl id="details-content" class="details-content"></dl>
+      <p id="details-note" class="details-note" hidden></p>
+      <section
+        id="ticket-selection"
+        class="ticket-selection"
+        aria-labelledby="ticket-selection-title"
+        hidden
+      >
+        <h3 id="ticket-selection-title">Selecciona tus boletos</h3>
+        <label class="ticket-quantity-label" for="ticket-quantity">Cantidad de boletos</label>
+        <input
+          id="ticket-quantity"
+          class="ticket-quantity"
+          type="number"
+          min="1"
+          step="1"
+          value="1"
+          inputmode="numeric"
+        />
+        <p id="ticket-availability" class="ticket-availability" hidden></p>
+        <p id="ticket-validation" class="ticket-validation" role="alert" hidden></p>
+        <div class="ticket-summary" aria-live="polite" aria-atomic="true">
+          <h4>Resumen de selección</h4>
+          <dl>
+            <dt>Evento</dt>
+            <dd id="summary-event"></dd>
+            <dt>Fecha y horario</dt>
+            <dd id="summary-date"></dd>
+            <dt>Precio unitario</dt>
+            <dd id="summary-price"></dd>
+            <dt>Cantidad</dt>
+            <dd id="summary-quantity"></dd>
+            <dt>Importe total</dt>
+            <dd id="summary-total"></dd>
+          </dl>
+        </div>
+        <button id="confirm-selection" class="details-button ticket-confirm" type="button">
+          Confirmar selección
+        </button>
+        <p id="ticket-confirmation" class="ticket-confirmation" role="status" hidden></p>
+      </section>
     </dialog>
 
     <footer class="site-footer">
