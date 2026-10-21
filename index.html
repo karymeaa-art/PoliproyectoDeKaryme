@@ -7,7 +7,7 @@
       name="description"
       content="Explora próximos conciertos, espectáculos y experiencias en Eventikets."
     />
-    <title>Eventos disponibles | Eventikets</title>
+    <title>Eventikets | Tu próximo evento te espera</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -19,7 +19,7 @@
   </head>
   <body>
     <header class="site-header">
-      <a class="brand" href="#" aria-label="Eventikets, inicio">
+      <a class="brand" href="#inicio" aria-label="Eventikets, ir al inicio">
         <span class="brand-mark" aria-hidden="true">
           <svg viewBox="0 0 32 32" fill="none">
             <path
@@ -34,30 +34,61 @@
         <span>eventi<span class="brand-accent">kets</span></span>
       </a>
       <span class="header-note">Momentos que se viven juntos</span>
+      <nav class="main-nav" aria-label="Navegación principal">
+        <a class="nav-link" href="#inicio">Inicio</a>
+        <a class="nav-link" href="#comprar">Comprar boletos</a>
+        <a class="nav-link" href="#perfil">Mi perfil</a>
+        <a class="nav-link" href="#compras">Mis compras</a>
+      </nav>
     </header>
 
-    <main>
-      <section class="catalog" aria-labelledby="catalog-title">
+    <main id="inicio">
+      <section class="catalog" id="comprar" aria-labelledby="catalog-title">
+        <div class="discovery-hero">
+          <div class="hero-copy">
+            <p class="hero-eyebrow"><span aria-hidden="true"></span> Música, cultura y experiencias</p>
+            <h1>Tu próximo evento<br />te espera</h1>
+            <p class="hero-description">
+              Descubre conciertos y espectáculos para compartir momentos inolvidables.
+            </p>
+            <label class="hero-search" for="event-search">
+              <span class="search-symbol" aria-hidden="true">⌕</span>
+              <input
+                id="event-search"
+                type="search"
+                placeholder="Busca por evento, artista, ciudad o lugar"
+                autocomplete="off"
+              />
+              <span class="search-hint">Buscar</span>
+            </label>
+          </div>
+          <div class="hero-art" aria-hidden="true">
+            <span class="hero-art-orbit"></span>
+            <span class="hero-ticket">
+              <span class="hero-ticket-label">EVENTIKETS · EN VIVO</span>
+              <strong>HAZ<br />ESPACIO<br />PARA MÁS.</strong>
+              <span class="hero-ticket-rule"></span>
+              <span class="hero-ticket-bottom">TU SIGUIENTE GRAN RECUERDO</span>
+            </span>
+          </div>
+        </div>
         <div class="catalog-heading">
           <div>
-            <p class="eyebrow"><span class="eyebrow-dot"></span> Encuentra tu próximo plan</p>
-            <h1 id="catalog-title">Eventos <span>disponibles</span></h1>
+            <p class="eyebrow"><span class="eyebrow-dot"></span> Explora el calendario</p>
+            <h2 id="catalog-title">Encuentra tu próximo plan</h2>
             <p class="catalog-intro">
-              Próximos conciertos, cultura y experiencias para hacer espacio en tu calendario.
+              Filtra por categoría o ciudad y encuentra algo que te emocione.
             </p>
           </div>
           <p class="catalog-count"><span id="event-count">0</span> experiencias para descubrir</p>
         </div>
 
         <div class="catalog-controls" aria-label="Buscar y filtrar eventos">
-          <label class="search-control">
-            <span>Buscar concierto</span>
-            <input
-              id="event-search"
-              type="search"
-              placeholder="Artista o ciudad"
-              autocomplete="off"
-            />
+          <label class="filter-control">
+            <span>Categoría</span>
+            <select id="category-filter">
+              <option value="">Todas las categorías</option>
+            </select>
           </label>
           <label class="filter-control">
             <span>Ciudad</span>
@@ -67,8 +98,115 @@
           </label>
         </div>
 
-        <div id="event-grid" class="event-grid" aria-live="polite"></div>
+        <section class="event-shelf" aria-labelledby="featured-title">
+          <div class="shelf-heading">
+            <div>
+              <p class="eyebrow">Selección Eventikets</p>
+              <h3 id="featured-title">Eventos destacados</h3>
+            </div>
+            <span class="shelf-note">Una selección para inspirarte</span>
+          </div>
+          <div id="featured-events-grid" class="event-grid" aria-live="polite"></div>
+        </section>
+        <section class="event-shelf upcoming-shelf" aria-labelledby="upcoming-title">
+          <div class="shelf-heading">
+            <div>
+              <p class="eyebrow">Más planes en el calendario</p>
+              <h3 id="upcoming-title">Próximos eventos</h3>
+            </div>
+          </div>
+          <div id="upcoming-events-grid" class="event-grid" aria-live="polite"></div>
+        </section>
         <p id="empty-state" class="empty-state" hidden>No hay eventos que coincidan con tu búsqueda.</p>
+      </section>
+      <section class="account-section" id="perfil" aria-labelledby="profile-title" hidden>
+        <div class="account-heading">
+          <p class="eyebrow"><span class="eyebrow-dot"></span> Tu cuenta</p>
+          <h2 id="profile-title">Mi perfil</h2>
+          <p class="account-intro">
+            Consulta y administra tu perfil de demostración.
+          </p>
+        </div>
+        <div id="storage-message" class="account-message" role="alert" hidden></div>
+        <div id="profile-guest" class="account-panel">
+          <p id="profile-storage-error" class="form-message" role="alert" hidden></p>
+          <div class="account-form-grid">
+            <form id="login-form" class="account-form">
+              <h3>Iniciar sesión</h3>
+              <label for="login-email">Correo electrónico</label>
+              <input id="login-email" name="email" type="email" autocomplete="email" required />
+              <button class="details-button" type="submit">Entrar a mi perfil</button>
+              <p id="login-message" class="form-message" role="status" hidden></p>
+            </form>
+            <form id="register-form" class="account-form">
+              <h3>Crear perfil demo</h3>
+              <label for="register-name">Nombre</label>
+              <input id="register-name" name="name" type="text" autocomplete="name" required />
+              <label for="register-email">Correo electrónico</label>
+              <input id="register-email" name="email" type="email" autocomplete="email" required />
+              <button class="details-button" type="submit">Registrar y entrar</button>
+              <p id="register-message" class="form-message" role="status" hidden></p>
+            </form>
+          </div>
+        </div>
+        <div id="profile-active" class="account-panel profile-active" hidden>
+          <div>
+            <p class="profile-label">Sesión iniciada como</p>
+            <h3 id="profile-name"></h3>
+            <p id="profile-email" class="profile-email"></p>
+          </div>
+          <div class="profile-actions">
+            <a class="text-action" href="#compras">Consultar mis compras</a>
+            <button id="edit-profile-button" class="secondary-button" type="button">Editar perfil</button>
+            <button id="logout-button" class="secondary-button" type="button">Cerrar sesión</button>
+          </div>
+          <form id="edit-profile-form" class="account-form profile-edit-form" hidden>
+            <h3>Editar datos del perfil</h3>
+            <label for="edit-name">Nombre</label>
+            <input id="edit-name" name="name" type="text" autocomplete="name" required />
+            <label for="edit-email">Correo electrónico</label>
+            <input id="edit-email" name="email" type="email" autocomplete="email" required />
+            <p id="edit-profile-message" class="form-message" role="alert" hidden></p>
+            <div class="profile-actions">
+              <button class="details-button" type="submit">Guardar cambios</button>
+              <button id="cancel-edit-profile" class="secondary-button" type="button">
+                Cancelar
+              </button>
+            </div>
+          </form>
+        </div>
+        <p class="privacy-note">
+          Perfil e historial guardados en localStorage para demostración. No es autenticación segura
+          y los datos pueden ser vistos o modificados por otras personas que usen este navegador.
+          No guardes contraseñas ni datos bancarios.
+        </p>
+      </section>
+      <section class="account-section purchases-section" id="compras" aria-labelledby="purchases-title" hidden>
+        <div class="account-heading">
+          <p class="eyebrow"><span class="eyebrow-dot"></span> Actividad de tu cuenta</p>
+          <h2 id="purchases-title">Mis compras</h2>
+          <p class="account-intro">Consulta las selecciones simuladas asociadas a tu perfil.</p>
+        </div>
+        <p id="purchases-signin" class="account-panel" hidden>
+          Inicia sesión en <a class="text-action" href="#perfil">Mi perfil</a> para ver tu historial.
+        </p>
+        <p id="purchases-empty" class="account-panel empty-purchases" hidden>
+          Todavía no tienes compras simuladas.
+        </p>
+        <div id="purchase-list" class="purchase-list" hidden></div>
+        <div id="purchase-detail" class="account-panel purchase-detail" hidden>
+          <div class="account-heading">
+            <p class="eyebrow">Detalle de compra</p>
+            <h3 id="purchase-detail-title"></h3>
+          </div>
+          <dl id="purchase-detail-content" class="purchase-detail-content"></dl>
+          <div class="purchase-actions">
+            <button id="purchase-back-button" class="secondary-button" type="button">
+              Volver a mis compras
+            </button>
+            <a class="details-button" href="#comprar">Volver al catálogo</a>
+          </div>
+        </div>
       </section>
     </main>
 
@@ -81,6 +219,23 @@
         <button class="details-close" type="button" aria-label="Cerrar detalles">×</button>
       </div>
       <dl id="details-content" class="details-content"></dl>
+      <div id="details-resources" class="details-resources" aria-label="Enlaces del evento">
+        <a id="ticketstar-event-link" target="_blank" rel="noopener noreferrer">
+          Ficha oficial y disponibilidad en Ticketstar
+        </a>
+        <a id="promotion-link" target="_blank" rel="noopener noreferrer">
+          Ver imagen promocional oficial
+        </a>
+        <a id="purchase-link" target="_blank" rel="noopener noreferrer" hidden>
+          Ir a compra directa
+        </a>
+        <a id="map-link" target="_blank" rel="noopener noreferrer">
+          Abrir ubicación en Google Maps
+        </a>
+        <p id="purchase-link-note">
+          La compra se consulta desde la ficha oficial; no se encontró un enlace individual de compra directa.
+        </p>
+      </div>
       <p id="details-note" class="details-note" hidden></p>
       <section
         id="ticket-selection"
@@ -117,7 +272,7 @@
           </dl>
         </div>
         <button id="confirm-selection" class="details-button ticket-confirm" type="button">
-          Confirmar selección
+          Confirmar compra simulada
         </button>
         <p id="ticket-confirmation" class="ticket-confirmation" role="status" hidden></p>
       </section>
