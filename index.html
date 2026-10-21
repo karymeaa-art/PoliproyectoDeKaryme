@@ -15,13 +15,12 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
-    <script src="events.js" type="module"></script>
   </head>
   <body>
     <header class="site-header">
       <a class="brand" href="#inicio" aria-label="Eventikets, ir al inicio">
         <span class="brand-mark" aria-hidden="true">
-          <svg viewBox="0 0 32 32" fill="none">
+          <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
               d="M5 10.5A2.5 2.5 0 0 0 7.5 8h17A2.5 2.5 0 0 0 27 10.5v2a3.5 3.5 0 0 0 0 7v2a2.5 2.5 0 0 0-2.5 2.5h-17A2.5 2.5 0 0 0 5 21.5v-2a3.5 3.5 0 0 0 0-7v-2Z"
               stroke="currentColor"
@@ -35,7 +34,7 @@
       </a>
       <span class="header-note">Momentos que se viven juntos</span>
       <nav class="main-nav" aria-label="Navegación principal">
-        <a class="nav-link" href="#inicio">Inicio</a>
+        <a class="nav-link" href="#inicio" aria-current="page">Inicio</a>
         <a class="nav-link" href="#comprar">Comprar boletos</a>
         <a class="nav-link" href="#perfil">Mi perfil</a>
         <a class="nav-link" href="#compras">Mis compras</a>
@@ -49,14 +48,14 @@
             <p class="hero-eyebrow"><span aria-hidden="true"></span> Música, cultura y experiencias</p>
             <h1>Tu próximo evento<br />te espera</h1>
             <p class="hero-description">
-              Descubre conciertos y espectáculos para compartir momentos inolvidables.
+              Descubre conciertos y experiencias para compartir momentos inolvidables.
             </p>
             <label class="hero-search" for="event-search">
               <span class="search-symbol" aria-hidden="true">⌕</span>
               <input
                 id="event-search"
                 type="search"
-                placeholder="Busca por evento, artista, ciudad o lugar"
+                placeholder="Busca por evento, artista o ciudad"
                 autocomplete="off"
               />
               <span class="search-hint">Buscar</span>
@@ -72,6 +71,7 @@
             </span>
           </div>
         </div>
+
         <div class="catalog-heading">
           <div>
             <p class="eyebrow"><span class="eyebrow-dot"></span> Explora el calendario</p>
@@ -108,6 +108,7 @@
           </div>
           <div id="featured-events-grid" class="event-grid" aria-live="polite"></div>
         </section>
+
         <section class="event-shelf upcoming-shelf" aria-labelledby="upcoming-title">
           <div class="shelf-heading">
             <div>
@@ -119,13 +120,12 @@
         </section>
         <p id="empty-state" class="empty-state" hidden>No hay eventos que coincidan con tu búsqueda.</p>
       </section>
+
       <section class="account-section" id="perfil" aria-labelledby="profile-title" hidden>
         <div class="account-heading">
           <p class="eyebrow"><span class="eyebrow-dot"></span> Tu cuenta</p>
           <h2 id="profile-title">Mi perfil</h2>
-          <p class="account-intro">
-            Consulta y administra tu perfil de demostración.
-          </p>
+          <p class="account-intro">Consulta y administra tu perfil de demostración.</p>
         </div>
         <div id="storage-message" class="account-message" role="alert" hidden></div>
         <div id="profile-guest" class="account-panel">
@@ -169,9 +169,7 @@
             <p id="edit-profile-message" class="form-message" role="alert" hidden></p>
             <div class="profile-actions">
               <button class="details-button" type="submit">Guardar cambios</button>
-              <button id="cancel-edit-profile" class="secondary-button" type="button">
-                Cancelar
-              </button>
+              <button id="cancel-edit-profile" class="secondary-button" type="button">Cancelar</button>
             </div>
           </form>
         </div>
@@ -181,6 +179,7 @@
           No guardes contraseñas ni datos bancarios.
         </p>
       </section>
+
       <section class="account-section purchases-section" id="compras" aria-labelledby="purchases-title" hidden>
         <div class="account-heading">
           <p class="eyebrow"><span class="eyebrow-dot"></span> Actividad de tu cuenta</p>
@@ -201,9 +200,7 @@
           </div>
           <dl id="purchase-detail-content" class="purchase-detail-content"></dl>
           <div class="purchase-actions">
-            <button id="purchase-back-button" class="secondary-button" type="button">
-              Volver a mis compras
-            </button>
+            <button id="purchase-back-button" class="secondary-button" type="button">Volver a mis compras</button>
             <a class="details-button" href="#comprar">Volver al catálogo</a>
           </div>
         </div>
@@ -220,40 +217,17 @@
       </div>
       <dl id="details-content" class="details-content"></dl>
       <div id="details-resources" class="details-resources" aria-label="Enlaces del evento">
-        <a id="ticketstar-event-link" target="_blank" rel="noopener noreferrer">
-          Ficha oficial y disponibilidad en Ticketstar
-        </a>
-        <a id="promotion-link" target="_blank" rel="noopener noreferrer">
-          Ver imagen promocional oficial
-        </a>
-        <a id="purchase-link" target="_blank" rel="noopener noreferrer" hidden>
-          Ir a compra directa
-        </a>
-        <a id="map-link" target="_blank" rel="noopener noreferrer">
-          Abrir ubicación en Google Maps
-        </a>
-        <p id="purchase-link-note">
-          La compra se consulta desde la ficha oficial; no se encontró un enlace individual de compra directa.
-        </p>
+        <a id="ticketstar-event-link" target="_blank" rel="noopener noreferrer">Ficha oficial y disponibilidad</a>
+        <a id="promotion-link" target="_blank" rel="noopener noreferrer">Ver cartel oficial</a>
+        <a id="purchase-link" target="_blank" rel="noopener noreferrer" hidden>Ir a compra directa</a>
+        <a id="map-link" target="_blank" rel="noopener noreferrer">Abrir ubicación</a>
+        <p id="purchase-link-note">La compra se consulta desde la ficha oficial; no se encontró un enlace individual de compra directa.</p>
       </div>
       <p id="details-note" class="details-note" hidden></p>
-      <section
-        id="ticket-selection"
-        class="ticket-selection"
-        aria-labelledby="ticket-selection-title"
-        hidden
-      >
+      <section id="ticket-selection" class="ticket-selection" aria-labelledby="ticket-selection-title" hidden>
         <h3 id="ticket-selection-title">Selecciona tus boletos</h3>
         <label class="ticket-quantity-label" for="ticket-quantity">Cantidad de boletos</label>
-        <input
-          id="ticket-quantity"
-          class="ticket-quantity"
-          type="number"
-          min="1"
-          step="1"
-          value="1"
-          inputmode="numeric"
-        />
+        <input id="ticket-quantity" class="ticket-quantity" type="number" min="1" step="1" value="1" inputmode="numeric" />
         <p id="ticket-availability" class="ticket-availability" hidden></p>
         <p id="ticket-validation" class="ticket-validation" role="alert" hidden></p>
         <div class="ticket-summary" aria-live="polite" aria-atomic="true">
@@ -271,9 +245,7 @@
             <dd id="summary-total"></dd>
           </dl>
         </div>
-        <button id="confirm-selection" class="details-button ticket-confirm" type="button">
-          Confirmar compra simulada
-        </button>
+        <button id="confirm-selection" class="details-button ticket-confirm" type="button">Confirmar compra simulada</button>
         <p id="ticket-confirmation" class="ticket-confirmation" role="status" hidden></p>
       </section>
     </dialog>
@@ -283,5 +255,7 @@
       <p>Tu siguiente gran recuerdo empieza aquí.</p>
       <span class="footer-year">EVENTIKETS · 2026</span>
     </footer>
+
+    <script type="module" src="src/data/control de eventos.js"></script>
   </body>
 </html>

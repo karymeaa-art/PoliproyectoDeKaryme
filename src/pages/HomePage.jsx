@@ -67,11 +67,11 @@ function HomePage() {
           <div className="hero-ring hero-ring-one" />
           <div className="hero-ring hero-ring-two" />
           <div className="hero-ticket">
-            <span className="ticket-topline">TU PRÓXIMA AVENTURA</span>
+            <span className="ticket-topline">EVENTIKETS · EN VIVO</span>
             <span className="ticket-sparkle">✳</span>
-            <span className="ticket-main">LIVE<br />MORE.</span>
+            <span className="ticket-main">HAZ<br />ESPACIO<br />PARA MÁS.</span>
             <span className="ticket-rule" />
-            <span className="ticket-caption">Haz espacio para lo inolvidable</span>
+            <span className="ticket-caption">TU SIGUIENTE GRAN RECUERDO</span>
           </div>
           <span className="hero-sticker">Nos vemos<br />ahí <span>↗</span></span>
           <span className="hero-index">01 / 03</span>
