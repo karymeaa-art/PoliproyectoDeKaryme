@@ -111,6 +111,6 @@ Algunos precios fueron proporcionados por el usuario y aún no han sido verifica
 ## Propósito
 
 Proyecto académico de desarrollo web enfocado en la consulta de eventos, la organización de una interfaz de venta de boletos y la implementación de funcionalidades mediante trabajo ágil.
-## enlase de la oagina en github pages
+## Enlase de la pagina en github pages
 https://karymeaa-art.github.io/PoliproyectoDeKaryme/ 
 
