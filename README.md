@@ -1,40 +1,116 @@
 # EventTickets
 
-Frontend para consultar eventos y guardar compras simuladas asociadas a perfiles de demostración. No realiza cobros; las fichas, promociones y mapas abren servicios externos.
+Frontend web para consultar eventos y guardar compras simuladas asociadas a perfiles de demostración.
+
+La aplicación permite explorar eventos, buscar por texto, filtrar por categoría y ciudad, consultar información y precios disponibles, seleccionar boletos y revisar el historial de compras.
+
+**EventTickets no realiza cobros ni procesa compras reales.**
+
+## Tecnologías utilizadas
+
+- **React:** construcción de la interfaz mediante componentes.
+- **Vite:** entorno de desarrollo y herramienta de compilación.
+- **JavaScript:** lógica e interactividad de la aplicación.
+- **HTML5:** estructura de la página.
+- **CSS3:** estilos y diseño adaptable.
+- **localStorage:** almacenamiento local de perfiles de demostración e historial de compras.
 
 ## Requisitos
 
-- Node.js y npm
+- Node.js
+- npm
+
+## Instalación
+
+Clonar el repositorio:
+
+```bash
+git clone URL_DEL_REPOSITORIO
+```
+
+Entrar a la carpeta del proyecto:
+
+```bash
+cd NOMBRE_DEL_REPOSITORIO
+```
+
+Instalar las dependencias:
+
+```bash
+npm install
+```
 
 ## Ejecutar en desarrollo
 
 ```bash
-npm install
 npm run dev
 ```
 
-Vite mostrará la dirección local donde se puede abrir la página.
+Vite mostrará la dirección local para abrir la aplicación en el navegador.
 
-## Compilar
+## Compilar el proyecto
 
 ```bash
 npm run build
 ```
 
-## Estructura
+Los archivos de producción se generan en la carpeta `dist/`.
+
+## Estructura del proyecto
 
 ```text
 src/
-  components/   Componentes reutilizables de la interfaz
-  data/         Eventos ficticios para las tarjetas
-  pages/        Página principal
-  styles/       Estilos globales y del sitio
-  App.jsx       Estructura principal
-  main.jsx      Punto de entrada de React
+├── components/   Componentes reutilizables
+├── data/         Información de los eventos
+├── pages/        Páginas de la aplicación
+├── styles/       Estilos globales y del sitio
+├── App.jsx       Estructura principal
+└── main.jsx      Punto de entrada de React
 ```
 
-El catálogo activo se sirve desde `index.html` y usa los eventos de `src/data/events.js` a través de `events.js`. La vista de compra incluye una portada de Eventikets, búsqueda por texto y filtros por categoría y ciudad, con secciones destacadas y próximos eventos basadas en el catálogo existente. La navegación muestra por separado las vistas de compra, perfil y compras. En la vista de compra, los eventos con precio confirmado permiten elegir la cantidad y consultar el total. Al confirmar, se guarda una compra simulada en `localStorage`, asociada al identificador del perfil actual. El perfil y su historial se conservan al recargar la página; el nombre y correo pueden editarse desde el perfil.
+Otros archivos importantes:
 
-Los eventos de Ticketstar se mantienen en `src/data/events.js` con enlaces a sus fichas, imágenes promocionales y búsquedas de ubicación en Google Maps. Los precios de Rogelio Ramos, Cornelio Vega, Tombochio en Guasave, Banda El Recodo y Hernán El Potro fueron proporcionados por el usuario y aún no están verificados en Ticketstar; los otros precios se muestran como pendientes. Las restricciones de edad y condiciones de acceso se indican como información por confirmar cuando la ficha no las publica. La compra real no se procesa desde Eventikets.
+- `index.html`: documento HTML de entrada.
+- `vite.config.js`: configuración de Vite.
+- `package.json`: dependencias y scripts.
+- `README.md`: documentación del proyecto.
 
-El registro y el inicio de sesión son solo demostraciones por correo: no hay contraseñas, autenticación segura ni backend. `localStorage` no protege la información frente a otras personas que usen el mismo navegador, y los datos pueden inspeccionarse o modificarse. No guardes contraseñas ni datos bancarios. La confirmación no procesa ningún pago.
+## Funcionalidades
+
+- Catálogo de eventos.
+- Búsqueda por texto.
+- Filtros por categoría y ciudad.
+- Secciones de eventos destacados y próximos.
+- Consulta de precios y selección de cantidad de boletos cuando el precio está confirmado.
+- Compras simuladas.
+- Perfiles de demostración.
+- Historial de compras asociado al perfil actual.
+- Edición del nombre y correo desde el perfil.
+- Enlaces externos a fichas de eventos, imágenes promocionales y ubicaciones en Google Maps.
+
+## Información de los eventos
+
+Los eventos se encuentran en `src/data/events.js`.
+
+Algunos precios fueron proporcionados por el usuario y aún no han sido verificados. Los precios pendientes y las condiciones de acceso deben confirmarse en las fuentes correspondientes.
+
+## Publicación
+
+**Aplicación publicada:** PENDIENTE DE PUBLICACIÓN
+
+**Enlace:** PENDIENTE
+
+## Consideraciones
+
+- Las compras son simuladas y no generan boletos reales.
+- No se realizan pagos.
+- El registro y el inicio de sesión son demostraciones, no autenticación segura.
+- `localStorage` almacena datos en el navegador y no constituye una base de datos compartida.
+- No se deben introducir contraseñas ni datos bancarios.
+
+## Propósito
+
+Proyecto académico de desarrollo web enfocado en la consulta de eventos, la organización de una interfaz de venta de boletos y la implementación de funcionalidades mediante trabajo ágil.
+## enlase de la oagina en github pages
+https://karymeaa-art.github.io/PoliproyectoDeKaryme/ 
+
